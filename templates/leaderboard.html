@@ -1,0 +1,39 @@
+{{define "leaderboard"}}
+<div class="space-y-4">
+    <div class="flex items-center justify-between">
+        <h1 class="plan-title text-lg font-semibold">leaderboard</h1>
+        <span class="text-xs text-muted-foreground/50">top plans by retrievals</span>
+    </div>
+
+    {{if .}}
+    <div class="border border-border rounded-sm overflow-hidden">
+        <table class="w-full text-xs">
+            <thead>
+                <tr class="bg-card border-b border-border text-muted-foreground/70">
+                    <th class="text-left px-3 py-2 w-12">#</th>
+                    <th class="text-left px-3 py-2">handle</th>
+                    <th class="text-right px-3 py-2">retrievals</th>
+                    <th class="text-right px-3 py-2">updated</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range $i, $p := .}}
+                <tr class="border-b border-border last:border-0 hover:bg-muted/50 transition-colors">
+                    <td class="px-3 py-2 text-muted-foreground/50">{{add $i 1}}</td>
+                    <td class="px-3 py-2">
+                        <a href="/{{$p.Handle}}" class="text-primary hover:text-primary/80 transition-colors">{{$p.Handle}}</a>
+                    </td>
+                    <td class="px-3 py-2 text-right text-muted-foreground">{{$p.Retrievals}}</td>
+                    <td class="px-3 py-2 text-right text-muted-foreground/70">{{timeago $p.UpdatedAt}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+    {{else}}
+    <div class="border border-border rounded-sm px-4 py-8 text-center text-muted-foreground/50 text-sm">
+        no plans yet
+    </div>
+    {{end}}
+</div>
+{{end}}

@@ -1,0 +1,39 @@
+{{define "layout"}}
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/output.css">
+    <script src="https://unpkg.com/htmx.org@2.0.7" defer></script>
+</head>
+<body class="bg-background text-foreground min-h-screen flex flex-col">
+    <header class="border-b border-border bg-card">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="/" class="text-primary font-bold text-sm hover:text-primary/80 transition-colors">winger</a>
+            <nav class="flex items-center gap-3 text-xs">
+                <a href="/" class="{{if eq .Active "leaderboard"}}text-primary{{else}}text-muted-foreground hover:text-foreground{{end}} transition-colors">leaderboard</a>
+                <span class="text-muted-foreground/30">|</span>
+                <a href="/random" class="text-muted-foreground hover:text-foreground transition-colors">random</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-6 flex-1 w-full">
+        {{.Content}}
+    </main>
+
+    <footer class="border-t border-border">
+        <div class="max-w-4xl mx-auto px-4 py-3 text-xs text-muted-foreground/50">
+            <span>winger</span>
+            <span class="text-muted-foreground/30 mx-2">|</span>
+            <span>a wingman product</span>
+        </div>
+    </footer>
+</body>
+</html>
+{{end}}

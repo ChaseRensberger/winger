@@ -1,0 +1,16 @@
+{{define "plan"}}
+<div class="space-y-4">
+    <div class="flex items-center justify-between">
+        <h1 class="plan-title text-lg font-semibold">[{{.Handle}}]</h1>
+        <div class="flex items-center gap-2 text-xs text-muted-foreground/50">
+            <span>{{.Retrievals}} retrievals</span>
+            <span class="text-muted-foreground/30">|</span>
+            <span>{{timeago .UpdatedAt}}</span>
+        </div>
+    </div>
+
+    <div class="border border-border rounded-sm bg-card">
+        <pre class="px-4 py-4 text-xs leading-relaxed whitespace-pre-wrap break-words text-foreground/90 overflow-x-auto">{{.Content}}</pre>
+    </div>
+</div>
+{{end}}

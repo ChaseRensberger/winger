@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: winger
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: "2323"
+      - key: DB_PATH
+        value: /data/winger.db
+    disk:
+      name: winger-data
+      mountPath: /data
+      sizeGB: 1
